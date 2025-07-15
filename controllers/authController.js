@@ -3,12 +3,12 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 
 exports.registrar = async (req, res) => {
-  const { nombre, apellidos, usuario, contraseña, roles, preguntaSeguridad, respuestaSeguridad } = req.body;
+  const { nombre, apellidos, usuario, contraseña, preguntaSeguridad, respuestaSeguridad } = req.body;
 
   console.log('[🟡 Body recibido]', req.body);
 
   // Validaciones básicas
-  if (!usuario || !nombre || !apellidos || !contraseña || !roles) {
+  if (!usuario || !nombre || !apellidos || !contraseña) {
     return res.status(400).json({ mensaje: 'Faltan campos obligatorios' });
   }
 
@@ -25,7 +25,7 @@ exports.registrar = async (req, res) => {
       apellidos,
       usuario,
       contraseña: await bcrypt.hash(contraseña, 10),
-      roles,
+      // roles,
     });
 
     const guardado = await nuevaPersona.save();
