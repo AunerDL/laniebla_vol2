@@ -9,5 +9,10 @@ router.get('/usuarios/:guid', authCtrl.obtenerUsuarioPorGuid); // Buscar por GUI
 router.put('/usuarios/:guid', authCtrl.editarUsuario); // Editar por GUID
 router.delete('/usuarios/:guid', authCtrl.eliminarUsuario); // Eliminar por GUID
 
+// Obtener pregunta secreta por usuario
+router.get('/usuarios/:usuario/pregunta', authCtrl.obtenerPreguntaSecreta);
+
+// Validar respuesta secreta y permitir cambio de contraseña
+router.post('/usuarios/:usuario/recuperar', authCtrl.recuperarConRespuestaSegura);
 
 module.exports = router;
