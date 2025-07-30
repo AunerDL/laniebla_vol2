@@ -183,4 +183,3 @@ exports.recuperarConRespuestaSegura = async (req, res) => {
     res.status(500).json({ mensaje: 'Error del servidor', error });
   }
 };
- controller
